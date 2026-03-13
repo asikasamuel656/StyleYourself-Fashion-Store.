@@ -1,0 +1,11 @@
+@import "tailwindcss";
+body{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif arial 'Poppins';
+}
+:root {
+  --gold: #D4AF37;
+  --navy: #0A1F44;
+}
