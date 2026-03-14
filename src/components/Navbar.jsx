@@ -1,47 +1,107 @@
-import { FaHeart, FaSearch, FaUser } from "react-icons/fa";
+import { useState } from "react";
+import {
+  FaFacebook,
+  FaInstagram,
+  FaSearch,
+  FaTiktok,
+  FaTwitter,
+  FaBars,
+  FaTimes,
+} from "react-icons/fa";
 
 const Navbar = () => {
-    return (
-        <div className="w-full text-white">
-            <div className="text-sm bg-amber-700 flex p-0.9 text-center items-center">
-                 <span className="hover:text-black ease-in cursor-pointer">www.Bella-fashion-store</span>
-                <span className="ml-10 hover:text-black ease-in cursor-pointer">+234 9026 6033 35</span>
-                <div className="flex justify-between ml-100 gap-8 items-center text-center">
-                    <span className="flex gap-1.5"><FaUser/>My Account</span>
-                    <span className="flex gap-1.5"><FaHeart/>My Wishlist</span>
-                    <select name="" id="" className="text-white">
-                        <option value="" disabled className="text-black">English</option>
-                        <option value="" className="text-black">Spanish</option>
-                        <option value="" className="text-black">French</option>
-                    </select>
-                    <span className="flex gap-1.5"><FaUser/>My account</span>
+  const [menuOpen, setMenuOpen] = useState(false);
 
-                </div>
-            </div>
-            <div className="block bg-amber-400 p-5 items-center justify-center shadow-xl">
-                <div className="flex items-center justify-center gap-9 mr-100">
-                    <span className="ml-60 font-bold text-xl cursor-pointer">Bella's</span>
-                    <div className="gap-9 ml-50 flex">
-                            <span>Home</span>
-                            <span>Shop</span>
-                            <span>Collection</span>
-                            <span>Blog</span>
-                            <span>Sale</span>
-                            <span>Contact</span>
-                    </div>
-                   
-                    <div className="relative w-72">
-                        <input
-                            type="text"
-                            placeholder="Search..."
-                            className="w-full h-10 rounded-full border-2 border-black pl-4 pr-10 outline-none h-5 ml-30 rounded-full p-4 border-black border-2 outline-0 shad"
-                        />
+  return (
+    <div className="w-full">
 
-                        <FaSearch className="absolute ml-67 top-1/2 -translate-y-1/2 text-gray-600 cursor-pointer hover:shadow-2xl" />
-                    </div>
-                </div>     
-            </div>
+      {/* Top Bar */}
+      <div className="bg-amber-700 text-white text-sm px-6 py-2 flex flex-col md:flex-row justify-between items-center gap-2">
+
+        <div className="flex gap-6">
+          <span className="hover:text-yellow-400 cursor-pointer">
+            styleyourself@gmail.com
+          </span>
+
+          <span className="hover:text-yellow-400 cursor-pointer">
+            +234 912 717 0775
+          </span>
         </div>
-    )
+
+        <div className="flex gap-5 text-lg">
+          <FaTwitter className="hover:text-yellow-400 cursor-pointer" />
+          <FaFacebook className="hover:text-yellow-400 cursor-pointer" />
+          <FaInstagram className="hover:text-yellow-400 cursor-pointer" />
+          <FaTiktok className="hover:text-yellow-400 cursor-pointer" />
+        </div>
+      </div>
+
+      {/* Main Navbar */}
+      <div className="bg-amber-400 shadow-xl">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+
+          {/* Logo */}
+          <h1 className="font-bold text-xl cursor-pointer">
+            StyleYourself
+          </h1>
+
+          {/* Desktop Menu */}
+          <div className="hidden md:flex gap-8 font-medium">
+            <span className="cursor-pointer hover:text-white">Home</span>
+            <span className="cursor-pointer hover:text-white">About</span>
+            <span className="cursor-pointer hover:text-white">Collection</span>
+            <span className="cursor-pointer hover:text-white">Blog</span>
+            <span className="cursor-pointer hover:text-white">Sale</span>
+            <span className="cursor-pointer hover:text-white">Contact</span>
+          </div>
+
+          {/* Search (Desktop) */}
+          <div className="hidden md:block relative w-64">
+            <input
+              type="text"
+              placeholder="Search..."
+              className="w-full h-10 rounded-full border border-black border-2 pl-4 pr-10 outline-none"
+            />
+
+            <FaSearch className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-600 cursor-pointer" />
+          </div>
+
+          {/* Hamburger */}
+          <div
+            className="md:hidden text-2xl cursor-pointer"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            {menuOpen ? <FaTimes /> : <FaBars />}
+          </div>
+        </div>
+
+        {/* Mobile Menu */}
+        {menuOpen && (
+          <div className="md:hidden flex flex-col items-center gap-6 pb-6 text-lg font-medium">
+
+            <span className="cursor-pointer hover:text-white">Home</span>
+            <span className="cursor-pointer hover:text-white">About</span>
+            <span className="cursor-pointer hover:text-white">Collection</span>
+            <span className="cursor-pointer hover:text-white">Blog</span>
+            <span className="cursor-pointer hover:text-white">Sale</span>
+            <span className="cursor-pointer hover:text-white">Contact</span>
+
+            {/* Mobile Search */}
+            <div className="relative w-72">
+              <input
+                type="text"
+                placeholder="Search..."
+                className="w-full h-10 rounded-full border border-black pl-4 pr-10 outline-none"
+              />
+
+              <FaSearch className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-600 cursor-pointer" />
+            </div>
+
+          </div>
+        )}
+      </div>
+    </div>
+  );
 };
+
 export default Navbar;

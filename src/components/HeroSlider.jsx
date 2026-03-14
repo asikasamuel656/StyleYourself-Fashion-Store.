@@ -1,96 +1,149 @@
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper/modules";
+import { useState, useEffect, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { FaChevronRight } from "react-icons/fa";
 
-import "swiper/css";
+import hero4 from "../assets/hero1.jpg";
+import hero5 from "../assets/hero2.jpg";
+import hero6 from "../assets/hero3.jpg";
+import hero7 from "../assets/hero2.jpg";
 
-const HeroSlider = () => {
-  return (
-    <div className="relative w-full h-screen">
+const slides = [
+  {
+    id: 1,
+    title: "Discover Your Perfect Style",
+    content:
+      "Step into elegance with our latest boutique collections. From trendy outfits to timeless classics, find styles that make you stand out wherever you go.",
+    image: hero7,
+    ctaText: "Shop Now",
+    ctaLink: "#",
+  },
+  {
+    id: 2,
+    title: "New Arrivals Just For You",
+    content:
+      "Stay ahead of fashion with our newest arrivals. Fresh styles, premium fabrics, and designs carefully selected to upgrade your wardrobe.",
+    image: hero6,
+    ctaText: "View Collection",
+    ctaLink: "#",
+  },
+  {
+    id: 3,
+    title: "Upgrade Your Wardrobe Today",
+    content:
+      "Explore stylish outfits that boost your confidence and express your personality.",
+    image: hero4,
+    ctaText: "Start Shopping",
+    ctaLink: "#",
+  }
+];
 
-      {/* IMAGE SLIDER */}
-      <Swiper
-        modules={[Autoplay]}
-        slidesPerView={1}
-        loop={true}
-        autoplay={{ delay: 3000, disableOnInteraction: false }}
-        className="h-full"
-      >
-        <SwiperSlide>
-          <img src="/Lady(2).png" className="w-full h-screen object-cover" />
-        </SwiperSlide>
-
-        <SwiperSlide>
-          <img src="/Lady(1).png" className="w-full h-screen object-cover" />
-        </SwiperSlide>
-
-        <SwiperSlide>
-          <img src="/man.png" className="w-full h-screen object-cover" />
-        </SwiperSlide>
-      </Swiper>
-
-      {/* TEXT OVERLAY */}
-      <div className="absolute top-0 left-0 w-full h-full flex items-center z-10 px-10">
-
-        <div className="max-w-lg font-bold font-serif">
-
-          <span className="text-gray-800 text-5xl leading-tight block mb-4">
-            Step Into Style – Discover the Trendiest Looks of the Season.
-          </span>
-
-          <div className="text-[15px] text-gray-600 mt-3">
-            <span>
-              Shop from a curated collection of fashion, tech, and lifestyle
-              products — all at unbeatable prices with secure checkout,
-              fast delivery and easy returns.
-            </span>
-          </div>
-
-          <button className="bg-black rounded-full w-28 h-10 text-white mt-6 hover:shadow-2xl hover:scale-95 transition cursor-pointer">
-            <span className="text-[12px]">
-              Shop Now
-            </span>
-          </button>
-
-          {/* CUSTOMER IMAGES */}
-          <div className="absolute bottom-20 left-240 p-4 bg-amber-400 rounded-xl text-sm shadow-lg hover:shadow-8xl cursor-pointer hover:scale-99">
-
-            <div className="flex items-center mb-2">
-              <img
-                src="/Lady(1).png"
-                alt="customers"
-                className="rounded-full h-10 w-10"
-              />
-
-              <img
-                src="/man.png"
-                alt="customers"
-                className="rounded-full h-10 w-10 -ml-2"
-              />
-
-              <img
-                src="/Lady(2).png"
-                alt="customers"
-                className="rounded-full h-10 w-10 -ml-2"
-              />
-
-              <span className="text-2xl font-extrabold font-mono ml-3">
-                50+
-              </span>
-            </div>
-
-            <span className="leading-tight text-gray-700">
-              Join our growing community of <br />
-              satisfied customers
-            </span>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-  );
+const textVariants = {
+  initial: { x: 50, opacity: 0 },
+  animate: { x: 0, opacity: 1 },
+  exit: { x: -50, opacity: 0 },
 };
 
-export default HeroSlider;
+export default function HeroSlider() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const nextSlide = useCallback(() => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
+  }, []);
+
+  const prevSlide = useCallback(() => {
+    setCurrentSlide((prev) =>
+      prev === 0 ? slides.length - 1 : prev - 1
+    );
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(nextSlide, 5000);
+    return () => clearInterval(interval);
+  }, [nextSlide]);
+
+  return (
+    <section className="relative w-full min-h-[90vh] lg:h-screen overflow-hidden bg-black">
+
+      {/* Background Image */}
+      <AnimatePresence mode="wait">
+        <motion.img
+          key={slides[currentSlide].id}
+          src={slides[currentSlide].image}
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover"
+          initial={{ opacity: 0, scale: 1.1 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.6 }}
+        />
+      </AnimatePresence>
+
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black/60"></div>
+
+      {/* Content */}
+      <div className="absolute inset-0 z-10 flex items-center justify-center px-6">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={slides[currentSlide].title}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            variants={textVariants}
+            transition={{ duration: 0.5 }}
+            className="text-center max-w-2xl"
+          >
+            <h1 className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+              {slides[currentSlide].title}
+            </h1>
+
+            <p className="text-gray-200 text-sm sm:text-base md:text-lg mb-8">
+              {slides[currentSlide].content}
+            </p>
+
+            <a
+              href={slides[currentSlide].ctaLink}
+              className="inline-flex items-center gap-3 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition"
+            >
+              {slides[currentSlide].ctaText}
+              <FaChevronRight />
+            </a>
+          </motion.div>
+        </AnimatePresence>
+      </div>
+
+      {/* Indicators */}
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-3 z-20">
+        {slides.map((slide, index) => (
+          <button
+            key={slide.id}
+            onClick={() => setCurrentSlide(index)}
+            className={`w-2.5 h-2.5 rounded-full transition ${
+              currentSlide === index
+                ? "bg-white scale-125"
+                : "bg-white/50"
+            }`}
+          />
+        ))}
+      </div>
+
+      {/* Arrows */}
+      <button
+        onClick={prevSlide}
+        className="absolute left-3 md:left-6 top-1/2 -translate-y-1/2
+        bg-white/20 text-white p-2 md:p-3 rounded-full hover:bg-white/40"
+      >
+        ◀
+      </button>
+
+      <button
+        onClick={nextSlide}
+        className="absolute right-3 md:right-6 top-1/2 -translate-y-1/2
+        bg-white/20 text-white p-2 md:p-3 rounded-full hover:bg-white/40"
+      >
+        ▶
+      </button>
+
+    </section>
+  );
+}
