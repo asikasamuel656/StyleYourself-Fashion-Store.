@@ -28,7 +28,7 @@ const About = () => {
         {/* Description */}
         <div className="space-y-5">
           <p className="text-neutral-600 text-base md:text-lg leading-relaxed">
-            StyleYourself is a fashion boutique where style meets confidence.
+            StyleYourself is a fashion store where style meets confidence.
             We provide trendy clothing, stylish accessories, and elegant
             perfumes designed to help you express your personality.
           </p>

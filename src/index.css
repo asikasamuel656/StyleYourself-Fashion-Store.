@@ -9,3 +9,13 @@ body{
   --gold: #D4AF37;
   --navy: #0A1F44;
 }
+/* Hide scrollbar (Chrome, Safari, Edge) */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar (Firefox) */
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE & Edge */
+  scrollbar-width: none;     /* Firefox */
+}

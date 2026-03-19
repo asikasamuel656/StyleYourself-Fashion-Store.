@@ -1,6 +1,17 @@
 import React, { useRef } from "react";
 import img4 from "../assets/img4.jpg";
 import hero3 from "../assets/hero3.jpg";
+import FaceCap from "../assets/FaceCap.jpg";
+import HandlessCart from "../assets/HandlessCart.jpg";
+import Slippers from "../assets/Slippers.jpg";
+import TravellingBag from "../assets/TravellingBag.jpg";
+import V_Shirt from "../assets/V_Shirt.jpg";
+import Belt from "../assets/Belt.jpg";
+import Hoody from "../assets/Hoody.jpg";
+import Perfume from "../assets/Perfume.jpg";
+import ItalianShoe from "../assets/ItalianShoe.jpg";
+import Sneaker from "../assets/Sneaker.jpg";
+import Short from "../assets/Short.jpg";
 import { FaChevronRight } from "react-icons/fa";
 
 const products = [
@@ -8,50 +19,50 @@ const products = [
     id: 1,
     name: "Face cap & Hats",
     price: "$45",
-    image: hero3,
+    image: FaceCap,
   },
   {
     id: 2,
-    name: "Handless",
+    name: "Handless tops",
     price: "$60",
-    image: img4,
+    image: HandlessCart,
   },
   {
     id: 4,
-    name: "Slippers",
+    name: "Authentic rubber slides",
     price: "$50",
-    image: hero3,
+    image: Slippers,
   },
   
   {
     id: 4,
     name: "Belts",
     price: "$25",
-    image: img4,
+    image: Belt,
   },
   {
     id: 5,
     name: "Traveling bags",
     price: "$25",
-    image: img4,
+    image: TravellingBag,
   },
   {
     id: 6,
-    name: "T-shirts",
+    name: "Vintage shirts",
     price: "$25",
-    image: img4,
+    image: V_Shirt,
   },
   {
     id: 7,
-    name: "Hoddies",
+    name: "Hoodies",
     price: "$25",
-    image: img4,
+    image: Hoody,
   },
   {
     id: 8,
     name: "Perfumes",
     price: "$25",
-    image: img4,
+    image: Perfume,
   },
   {
     id: 9,
@@ -61,7 +72,25 @@ const products = [
   },
   {
     id: 10,
-    name: "Shoe",
+    name: "Italian Shoe",
+    price: "$25",
+    image: ItalianShoe,
+  },
+  {
+    id: 11,
+    name: "Sneakers",
+    price: "$25",
+    image: Sneaker,
+  },
+  {
+    id: 12,
+    name: "Shorts",
+    price: "$25",
+    image: Short,
+  },
+  {
+    id: 12,
+    name: "Baggy jeans",
     price: "$25",
     image: img4,
   },
@@ -79,7 +108,7 @@ const Collection = () => {
   };
 
   return (
-    <section className="py-16 px-6 max-w-7xl mx-auto">
+    <section className="py-12 px-6 max-w-7xl mx-auto">
 
       
       <div className="flex justify-between items-center mb-8">
@@ -126,7 +155,7 @@ const Collection = () => {
       {/* Carousel */}
       <div
         ref={carouselRef}
-        className="flex gap-6 overflow-x-auto scroll-smooth no-scrollbar"
+        className="flex gap-6 overflow-x-auto scroll-smooth no-scrollbar snap-x"
       >
         {products.map((item) => (
           <div
