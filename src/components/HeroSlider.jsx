@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FaChevronRight } from "react-icons/fa";
 
 import hero4 from "../assets/hero1.jpg";
-import hero5 from "../assets/hero2.jpg";
 import hero6 from "../assets/hero3.jpg";
 import hero7 from "../assets/hero2.jpg";
 
@@ -103,7 +102,7 @@ export default function HeroSlider() {
 
             <a
               href={slides[currentSlide].ctaLink}
-              className="inline-flex items-center gap-3 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition"
+              className="inline-flex items-center gap-3 bg-amber-500 hover:bg-amber-600 text-white px-6 py-3 rounded-lg font-semibold transition"
             >
               {slides[currentSlide].ctaText}
               <FaChevronRight />

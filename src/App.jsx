@@ -1,16 +1,18 @@
-import HeroSection from './components/HeroSection'
+import About from './components/About'
+import Collection from './components/Collection'
 import HeroSlider from './components/HeroSlider'
 import Navbar from './components/Navbar'
-import ShopCategory from './components/ShopCategory'
+import Reviews from './components/Reviews'
 
 function App() {
   return (
     <>
       <div>
          <Navbar />
-         {/* <HeroSection /> */}
-         < HeroSlider />
-         <ShopCategory />
+         <HeroSlider />
+         <About />
+         <Collection />
+         <Reviews />
       </div>
     </>
   )
