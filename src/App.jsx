@@ -1,20 +1,21 @@
+import Navbar from './components/Navbar'
+import Heroslider from './components/HeroSlider'
 import About from './components/About'
 import Collection from './components/Collection'
-import HeroSlider from './components/HeroSlider'
-import Navbar from './components/Navbar'
+import Sale from './components/Sale'
 import Reviews from './components/Reviews'
-
-function App() {
+import Contact from './components/Contact'
+const App = () => {
   return (
-    <>
-      <div>
-         <Navbar />
-         <HeroSlider />
-         <About />
-         <Collection />
-         <Reviews />
-      </div>
-    </>
+    <div>
+      <Navbar />
+      <Heroslider />
+      <About />
+      <Collection />
+      <Sale />
+      <Reviews />
+      <Contact />
+    </div>
   )
 }
 

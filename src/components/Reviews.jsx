@@ -32,21 +32,35 @@ const Testimonials = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <section className="relative bg-neutral-50 overflow-hidden py-12">
+    <section id="Reviews" className="scroll-smooth relative overflow-hidden py-12">
       <div className="container mx-auto px-4 relative z-10">
         
-        {/* Section header */}
+        {/* Section header */}{/* Section label */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-16"
+          className="text-center max-w-6xl mx-auto mb-10"
         >
-          <h2 className="text-3xl font-bold mb-4">What Our Customers Say</h2>
-          <p className="text-gray-600">
+          <div>
+          <div className="flex items-center gap-3 mb-4">
+            <span className="w-10 h-0.5 bg-[gold]" />
+            <span className="text-[gold] font-semibold text-sm uppercase tracking-wider">
+              REVIEWS
+            </span>
+          </div>
+
+          {/* Title */}
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-800 mb-2 leading-tight">
+            CUSTOMERS <span className="text-[gold]">FEEDBACK !</span>
+          </h2>
+
+          {/* Description */}
+          <p className="text-neutral-600 text-lg leading-relaxed">
             Real feedback from our happy customers.
           </p>
+        </div>
         </motion.div>
 
         {/* Active testimonial display */}
@@ -92,7 +106,7 @@ const Testimonials = () => {
               className={`w-full text-left p-6 rounded-xl transition-all duration-300 ${
                 index === activeIndex
                   ? "bg-white shadow-lg ring-2 ring-amber-500"
-                  : "bg-white/50 hover:bg-white hover:shadow-md"
+                  : "bg-white/50 hover:bg-white hover:shadow-lg"
               }`}
             >
               <div className="flex items-center gap-4">

@@ -2,11 +2,11 @@ import { useState } from "react";
 import {
   FaFacebook,
   FaInstagram,
-  FaSearch,
   FaTiktok,
   FaTwitter,
   FaBars,
   FaTimes,
+  FaSearch,
 } from "react-icons/fa";
 
 const Navbar = () => {
@@ -16,28 +16,22 @@ const Navbar = () => {
     <div className="w-full">
 
       {/* Top Bar */}
-      <div className="bg-amber-700 text-white text-sm px-4 md:px-6 py-2 flex flex-col sm:flex-row justify-between items-center gap-2">
-
-        <div className="flex flex-col sm:flex-row gap-2 sm:gap-6 text-center sm:text-left">
-          <span className="hover:text-yellow-400 cursor-pointer">
-            styleyourself@gmail.com
-          </span>
-
-          <span className="hover:text-yellow-400 cursor-pointer">
-            +234 912 717 0775
-          </span>
+      <div className="bg-amber-800 text-white text-sm px-4 md:px-6 py-2 flex flex-col sm:flex-row justify-between items-center gap-2">
+        <div className="text-center sm:text-left">
+          <span className="cursor-pointer hover:text-yellow-400">styleyourself@gmail.com &nbsp;</span>
+          <span className="cursor-pointer hover:text-yellow-400">&nbsp; +234 912 717 0775</span>
         </div>
 
         <div className="flex gap-4 text-lg">
-          <FaTwitter className="hover:text-yellow-400 cursor-pointer" />
-          <FaFacebook className="hover:text-yellow-400 cursor-pointer" />
-          <FaInstagram className="hover:text-yellow-400 cursor-pointer" />
-          <FaTiktok className="hover:text-yellow-400 cursor-pointer" />
+          <FaTwitter className="cursor-pointer hover:text-yellow-400" />
+          <FaFacebook className="cursor-pointer hover:text-yellow-400" />
+          <FaInstagram className="cursor-pointer hover:text-yellow-400" />
+          <FaTiktok className="cursor-pointer hover:text-yellow-400" />
         </div>
       </div>
 
       {/* Main Navbar */}
-      <div className="bg-amber-400 shadow-xl">
+      <div className="bg-amber-400 shadow-md">
         <div className="max-w-7xl mx-auto px-4 md:px-6 py-4 flex items-center justify-between">
 
           {/* Logo */}
@@ -45,27 +39,27 @@ const Navbar = () => {
             StyleYourself
           </h1>
 
-          {/* Desktop Menu (ONLY large screens) */}
+          {/* Desktop Menu */}
           <div className="hidden lg:flex gap-8 font-medium">
-            <span className="cursor-pointer hover:text-white">Home</span>
-            <span className="cursor-pointer hover:text-white">About</span>
-            <span className="cursor-pointer hover:text-white">Collection</span>
-            <span className="cursor-pointer hover:text-white">Sale</span>
-            <span className="cursor-pointer hover:text-white">Reviews</span>
-            <span className="cursor-pointer hover:text-white">Contact</span>
+            <a className="hover:text-white cursor-pointer">Home</a>
+            <a className="hover:text-white cursor-pointer" href="#About">About</a>
+            <a className="hover:text-white cursor-pointer" href="#Collection">Collection</a>
+            <a className="hover:text-white cursor-pointer" href="#Sale">Sale</a>
+            <a className="hover:text-white cursor-pointer" href="#Reviews">Reviews</a>
+            <a className="hover:text-white cursor-pointer" href="#Contact">Contact</a>
           </div>
 
-          {/* Search */}
-          <div className="hidden md:block lg:block relative w-40 lg:w-64">
+          {/* Search Bar (Desktop) */}
+          <div className="hidden lg:flex items-center border-2 border-black rounded-full px-3 py-1">
             <input
               type="text"
               placeholder="Search..."
-              className="w-full h-9 lg:h-10 rounded-full border-2 border-black pl-4 pr-10 outline-none text-sm"
+              className="bg-transparent outline-none px-2 text-sm font-bold"
             />
-            <FaSearch className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-600 cursor-pointer" />
+            <FaSearch className="cursor-pointer"/>  
           </div>
 
-          {/* Hamburger (Mobile + Tablet) */}
+          {/* Hamburger (Mobile) */}
           <div
             className="lg:hidden text-2xl cursor-pointer"
             onClick={() => setMenuOpen(!menuOpen)}
@@ -74,27 +68,26 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Mobile & Tablet Menu */}
+        {/* Mobile Menu */}
         {menuOpen && (
-          <div className="lg:hidden flex flex-col items-center gap-6 pb-6 text-lg font-medium">
+          <div className="lg:hidden flex flex-col items-center gap-5 pb-6 text-lg font-medium">
 
-            <span className="cursor-pointer hover:text-white">Home</span>
-            <span className="cursor-pointer hover:text-white">About</span>
-            <span className="cursor-pointer hover:text-white">Collection</span>
-            <span className="cursor-pointer hover:text-white">Blog</span>
-            <span className="cursor-pointer hover:text-white">Sale</span>
-            <span className="cursor-pointer hover:text-white">Contact</span>
+            <a className="hover:text-white cursor-pointer">Home</a>
+            <a className="hover:text-white cursor-pointer" href="#About">About</a>
+            <a className="hover:text-white cursor-pointer" href="#Collection">Collection</a>
+            <a className="hover:text-white cursor-pointer" href="#Sale">Sale</a>
+            <a className="hover:text-white cursor-pointer" href="#Reviews">Reviews</a>
+            <a className="hover:text-white cursor-pointer" href="#Contact">Contact</a>
 
-            {/* Search */}
-            <div className="relative w-72">
+            {/* Mobile Search */}
+            <div className="flex items-center border border-black rounded-full px-3 py-1 mt-2">
               <input
                 type="text"
                 placeholder="Search..."
-                className="w-full h-10 rounded-full border border-black pl-4 pr-10 outline-none"
+                className="bg-transparent outline-none px-2 text-sm"
               />
-              <FaSearch className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-600 cursor-pointer" />
+              <FaSearch />
             </div>
-
           </div>
         )}
       </div>

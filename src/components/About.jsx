@@ -7,11 +7,21 @@ import hero3 from "../assets/hero3.jpg";
 
 const About = () => {
   return (
-    <div className="flex flex-col lg:flex-row px-4 md:px-8 lg:px-16 py-12 bg-neutral-50 items-center gap-10">
+    <section
+      id="About"
+      className="relative scroll-smooth flex flex-col lg:flex-row px-4 md:px-8 lg:px-16 py-12 bg-neutral-100 items-center gap-10"
+    >
+      {/* Background Glow */}
+      <div className="absolute inset-0 bg-gradient-to-br from-amber-500/10 via-transparent to-transparent blur-3xl"></div>
 
       {/* LEFT SIDE */}
-      <div className="w-full lg:w-1/2">
-
+      <motion.div
+        initial={{ opacity: 0, x: -60 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="relative z-10 w-full lg:w-1/2"
+      >
         {/* Section Label */}
         <div className="flex items-center gap-3 mb-4">
           <span className="w-10 h-0.5 bg-[gold]" />
@@ -37,7 +47,14 @@ const About = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
 
             {/* Mission */}
-            <div className="p-4 bg-neutral-200 rounded-lg shadow-xl">
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              whileHover={{ y: -8 }}
+              className="p-4 bg-neutral-200 rounded-lg shadow-xl"
+            >
               <div className="w-9 h-9 bg-[gold] rounded-xl flex items-center justify-center mb-4">
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
@@ -53,10 +70,17 @@ const About = () => {
                 To help customers express their personality through stylish,
                 trendy and affordable fashion.
               </p>
-            </div>
+            </motion.div>
 
             {/* Vision */}
-            <div className="p-4 bg-neutral-200 rounded-lg shadow-xl">
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              whileHover={{ y: -8 }}
+              className="p-4 bg-neutral-200 rounded-lg shadow-xl"
+            >
               <div className="w-9 h-9 bg-[gold] rounded-xl flex items-center justify-center mb-4">
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
@@ -73,52 +97,72 @@ const About = () => {
               <p className="text-neutral-600 text-sm">
                 To become a trusted fashion brand inspiring uniqueness through style.
               </p>
-            </div>
+            </motion.div>
           </div>
 
           {/* Button */}
-          <div className="pt-6 flex flex-col sm:flex-row gap-4 sm:items-center">
-          <a className="group inline-flex justify-center items-center gap-3 text-white bg-amber-500 px-7 py-3 rounded-xl font-semibold transition-all duration-300 hover:bg-amber-600 hover:shadow-xl w-full sm:w-auto">
-            Contact Us
-            <FaChevronRight className="transition-transform duration-300 group-hover:translate-x-2" />
-          </a>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4 }}
+            className="pt-6 flex flex-col sm:flex-row gap-4 sm:items-center"
+          >
+            <motion.a
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="group inline-flex justify-center items-center gap-3 text-white bg-amber-500 px-7 py-3 rounded-xl font-semibold transition-all duration-300 hover:bg-amber-600 hover:shadow-xl w-full sm:w-auto"
+            >
+              Contact Us
+              <FaChevronRight className="transition-transform duration-300 group-hover:translate-x-2" />
+            </motion.a>
+          </motion.div>
         </div>
-        </div>
-      </div>
+      </motion.div>
 
       {/* RIGHT SIDE */}
-      <div className="w-full lg:w-1/2 flex justify-center">
-        <div className="relative w-full max-w-[400px] sm:max-w-[450px] md:max-w-[500px] aspect-square">
+      <motion.div
+        initial={{ opacity: 0, x: 60 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="relative z-10 w-full lg:w-1/2 flex justify-center"
+      >
+        <div className="relative w-full max-w-[400px] aspect-square">
 
           {/* Glow */}
-          <div className="absolute w-48 sm:w-72 h-48 sm:h-72 bg-amber-200 blur-3xl rounded-full -z-10 top-10 left-10"></div>
+          <div className="absolute w-48 h-48 bg-amber-200 blur-3xl rounded-full -z-10 top-10 left-10"></div>
 
           {/* Main Image */}
-          <div className="absolute inset-0 rounded-2xl overflow-hidden shadow-2xl">
-            <img src={img5} alt="main" className="w-full h-full object-cover" />
-          </div>
-
-          {/* Top Image */}
           <motion.div
-            className="absolute -top-6 -right-6 sm:-top-10 sm:-right-10 w-32 sm:w-40 md:w-48 h-24 sm:h-28 md:h-32 rounded-xl overflow-hidden shadow-xl border-4 border-white"
+            initial={{ scale: 0.9 }}
+            whileInView={{ scale: 1 }}
+            transition={{ duration: 0.5 }}
+            className="absolute inset-0 rounded-2xl overflow-hidden shadow-2xl"
+          >
+            <img src={img5} alt="main" className="w-full h-full object-cover" />
+          </motion.div>
+
+          {/* Floating Top */}
+          <motion.div
+            className="absolute -top-8 -right-8 w-40 h-28 rounded-xl overflow-hidden shadow-xl border-4 border-white"
             animate={{ y: [0, -10, 0] }}
             transition={{ duration: 3, repeat: Infinity }}
           >
             <img src={img4} alt="top" className="w-full h-full object-cover" />
           </motion.div>
 
-          {/* Bottom Image */}
+          {/* Floating Bottom */}
           <motion.div
-            className="absolute -bottom-6 -left-6 sm:-bottom-10 sm:-left-10 w-36 sm:w-44 md:w-56 h-24 sm:h-28 md:h-36 rounded-xl overflow-hidden shadow-xl border-4 border-white"
+            className="absolute -bottom-8 -left-8 w-48 h-32 rounded-xl overflow-hidden shadow-xl border-4 border-white"
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 4, repeat: Infinity }}
           >
             <img src={hero3} alt="bottom" className="w-full h-full object-cover" />
           </motion.div>
-
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </section>
   );
 };
 
